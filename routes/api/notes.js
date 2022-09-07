@@ -5,7 +5,7 @@ const { readFromFile, readAndAppend } = require("../../helpers/fsUtils");
 
 notes.get("/", (req, res) => {
   readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data)));
-}); //include else error statement
+});
 
 notes.post("/", (req, res) => {
   console.log(req.body);
@@ -20,6 +20,7 @@ notes.post("/", (req, res) => {
     };
 
     readAndAppend(newNote, "./db/db.json");
+
     res.json(`New note added! 📝`);
   } else {
     res.json(`Unable to write note! ❌`);
