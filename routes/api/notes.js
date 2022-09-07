@@ -1,10 +1,11 @@
-const notes = require("express").Router();
+const express = require("express");
+const notes = express.Router();
 const { v4: uuidv4 } = require("uuid");
 const { readFromFile, readAndAppend } = require("../../helpers/fsUtils");
 
 notes.get("/", (req, res) => {
-  readFromFile("./db/tips.json").then((data) => res.json(JSON.parse(data)));
-});
+  readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data)));
+}); //include else error statement
 
 notes.post("/", (req, res) => {
   console.log(req.body);

@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const { clog } = require("./middleware/clog");
-const api = require("./routes/api/index");
+const api = require("./routes/api/");
 
 const app = express();
 
@@ -24,11 +24,11 @@ app.get("/", (req, res) =>
 
 // GET route to redirect to homepage if undefined route
 app.get("*", (req, res) =>
-  res.sendFile(path.join(__dirname, "/public/index.html"))
+  res.sendFile(path.join(__dirname, "/public/notes.html"))
 );
 
 app.get("/notes", (req, res) =>
-  res.sendFile(path.join(__dirname, "/public/notes.html"))
+  res.sendFile(path.join(__dirname, "/public/index.html"))
 );
 
 app.listen(PORT, () =>
