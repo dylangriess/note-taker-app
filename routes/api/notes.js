@@ -10,19 +10,19 @@ notes.get("/", (req, res) => {
 notes.post("/", (req, res) => {
   console.log(req.body);
 
-  const { noteTitle, noteInput } = req.body;
+  const { title, text } = req.body;
 
-  if (noteTitle && noteInput) {
+  if (title && text) {
     const newNote = {
-      noteTitle,
-      noteInput,
+      title,
+      text,
       id: uuidv4(),
     };
 
     readAndAppend(newNote, "./db/db.json");
     res.json(`New note added! 📝`);
   } else {
-    res.error(`Unable to write note! ❌`);
+    res.json(`Unable to write note! ❌`);
   }
 });
 
